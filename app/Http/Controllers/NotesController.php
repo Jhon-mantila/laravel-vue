@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Notes;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class NotesController extends Controller
 {
@@ -13,6 +14,9 @@ class NotesController extends Controller
     public function index()
     {
         //
+        return Inertia::render('Notes/index', [
+            'notes' => Notes::latest()->get()
+        ]);
     }
 
     /**
