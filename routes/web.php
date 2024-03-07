@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use \App\Http\Controllers\PageController;
+use \App\Http\Controllers\NotesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,4 +45,6 @@ Route::middleware([
     Route::get('/dashboard', 
     [PageController::class, 'dashboard']
     )->name('dashboard');
+
+    Route::resource('notes', NotesController::class)->middleware('auth:sanctum');
 });
