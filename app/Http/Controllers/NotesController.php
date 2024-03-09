@@ -51,15 +51,27 @@ class NotesController extends Controller
     public function edit(Notes $note)
     {
         //
+        //dd($note);
         return Inertia::render('Notes/Edit', compact('note'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Notes $notes)
+    public function update(Request $request, Notes $note)
     {
         //
+        //dd($note);
+        $request->validate([
+            'excerpt' => 'required',
+            'content' => 'required',
+        ]);
+
+        $note->update($request->all());
+        //Esta es mas rapido
+        return redirect()->route('notes.index');
+        //Que esta
+        //return Inertia::location('/inertia/public/notes');
     }
 
     /**

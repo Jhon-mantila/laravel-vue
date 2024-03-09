@@ -3,13 +3,22 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 import {Link, useForm} from '@inertiajs/vue3';
 
 const props = defineProps({
-    note: Array,
+    note:  Array,
 });
 
+console.log(props)
 const form = useForm({
-    resumen:props.note.excerpt,
-    contenido:props.note.content
-})
+    excerpt:props.note.excerpt,
+    content:props.note.content
+});
+
+const submit = () =>{
+    form.put(
+        route('notes.update', props.note.id), 
+        form
+    );
+};
+
 
 </script>
 
@@ -33,12 +42,12 @@ const form = useForm({
                         </div>
                         <div class="md:col-span-2 mt-5 md:mt-0">
                             <div class="shadow bg-white md:rounded-m p-4">
-                                <form>
+                                <form @submit.prevent="submit">
                                     <label for="" class="block font-medium text-sm text-gray-700">Resumen</label>
-                                    <textarea class="form-input w-full rounded-md shadow-sm" v-model="form.resumen"> 
+                                    <textarea class="form-input w-full rounded-md shadow-sm" v-model="form.excerpt"> 
                                     </textarea> 
                                     <label for="" class="block font-medium text-sm text-gray-700">Contenido</label>
-                                    <textarea class="form-input w-full rounded-md shadow-sm" v-model="form.contenido" rows="8">  
+                                    <textarea class="form-input w-full rounded-md shadow-sm" v-model="form.content" rows="8">  
                                     </textarea> 
                                     <button 
                                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">
