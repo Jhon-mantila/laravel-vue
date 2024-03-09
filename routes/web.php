@@ -46,5 +46,5 @@ Route::middleware([
     [PageController::class, 'dashboard']
     )->name('dashboard');
 
-    Route::resource('notes', NotesController::class)->middleware('auth:sanctum');
+    Route::resource('/notes', NotesController::class)->middleware('auth:sanctum');
 });
