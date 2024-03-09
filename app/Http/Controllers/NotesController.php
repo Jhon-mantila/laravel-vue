@@ -48,9 +48,10 @@ class NotesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Notes $notes)
+    public function edit(Notes $note)
     {
         //
+        return Inertia::render('Notes/Edit', compact('note'));
     }
 
     /**
