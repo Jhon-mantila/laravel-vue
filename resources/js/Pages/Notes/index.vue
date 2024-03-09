@@ -27,7 +27,12 @@ defineProps({
                         </div>
                         <div class="md:col-span-2 mt-5 md:mt-0">
                             <div class="shadow bg-white md:rounded-m p-4">
-                                <table>
+                                <Link :href="route('notes.create')" 
+                                class="bg-blue-500 text-white font-bold py-2 px-4 rounded-md">
+                                    Crear
+                                </Link>
+                          
+                                <table class="my-4">
                                     <tr v-for="(note, i) in notes" :key="i">
                                         <td class="border px-4 py-2">
                                             {{ note.excerpt }}

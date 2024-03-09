@@ -25,6 +25,8 @@ class NotesController extends Controller
     public function create()
     {
         //
+        return Inertia::render('Notes/Create');
+
     }
 
     /**
@@ -33,6 +35,17 @@ class NotesController extends Controller
     public function store(Request $request)
     {
         //
+                //dd($note);
+                $request->validate([
+                    'excerpt' => 'required',
+                    'content' => 'required',
+                ]);
+        
+                $note = Notes::create($request->all());
+                //Esta es mas rapido
+                return redirect()->route('notes.edit', $note->id);
+
+
     }
 
     /**
