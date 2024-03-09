@@ -38,9 +38,11 @@ class NotesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Notes $notes)
+    public function show(Notes $note)
     {
         //
+        //dd($note);
+        return Inertia::render('Notes/Show', compact('note'));
     }
 
     /**
