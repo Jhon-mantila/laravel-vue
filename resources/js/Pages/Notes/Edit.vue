@@ -25,7 +25,6 @@ const destroy = (id) => {
             route('notes.destroy', id), 
         form
          );
- 
     }
 }
 

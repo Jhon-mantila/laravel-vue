@@ -43,7 +43,7 @@ class NotesController extends Controller
         
                 $note = Notes::create($request->all());
                 //Esta es mas rapido
-                return redirect()->route('notes.edit', $note->id);
+                return redirect()->route('notes.edit', $note->id)->with('status', '🔥 Nota Creada');;
 
 
     }
@@ -82,7 +82,7 @@ class NotesController extends Controller
 
         $note->update($request->all());
         //Esta es mas rapido
-        return redirect()->route('notes.index');
+        return redirect()->route('notes.index')->with('status', '🔥 Nota Actualizada');;
         //Que esta
         //return Inertia::location('/inertia/public/notes');
     }
@@ -95,6 +95,6 @@ class NotesController extends Controller
         //
         $note->delete();
 
-        return redirect()->route('notes.index');
+        return redirect()->route('notes.index')->with('status', '🔥 Nota Eliminada');
     }
 }
