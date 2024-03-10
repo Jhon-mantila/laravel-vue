@@ -3,9 +3,10 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 import { reactive } from 'vue';
 import {Link, useForm, router } from '@inertiajs/vue3';
 
+
 const form = reactive({
-    excerpt:null,
-    content:null
+    excerpt:'',
+    content:''
 });
 
 function submit(){
@@ -40,8 +41,8 @@ function submit(){
                             <div class="shadow bg-white md:rounded-m p-4">
                                 <form @submit.prevent="submit">
                                     <label for="" class="block font-medium text-sm text-gray-700">Resumen</label>
-                                    <textarea class="form-input w-full rounded-md shadow-sm" v-model="form.excerpt"> 
-                                    </textarea> 
+                                    <textarea class="form-input w-full rounded-md shadow-sm" v-model="form.excerpt" name="excerpt" @change="form.validate('excerpt')"> 
+                                    </textarea>
                                     <label for="" class="block font-medium text-sm text-gray-700">Contenido</label>
                                     <textarea class="form-input w-full rounded-md shadow-sm" v-model="form.content" rows="8">  
                                     </textarea> 

@@ -19,6 +19,15 @@ const submit = () =>{
     );
 };
 
+const destroy = (id) => {
+    if(confirm('¿Desea Eliminar?')){
+        form.delete(
+            route('notes.destroy', id), 
+        form
+         );
+ 
+    }
+}
 
 </script>
 
@@ -54,6 +63,12 @@ const submit = () =>{
                                         Editar
                                     </button>    
                                 </form>
+
+                                <hr class="my-6">
+
+                                <a href="#" @click.prevent="destroy(note.id)">
+                                Eliminar Nota
+                                </a>
                             </div>
                         </div>  
                     </div>

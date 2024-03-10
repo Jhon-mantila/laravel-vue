@@ -35,7 +35,7 @@ class NotesController extends Controller
     public function store(Request $request)
     {
         //
-                //dd($note);
+                //dd($request);
                 $request->validate([
                     'excerpt' => 'required',
                     'content' => 'required',
@@ -90,8 +90,11 @@ class NotesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Notes $notes)
+    public function destroy(Notes $note)
     {
         //
+        $note->delete();
+
+        return redirect()->route('notes.index');
     }
 }
