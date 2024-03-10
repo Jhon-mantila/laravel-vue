@@ -11,11 +11,13 @@ class NotesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //
         return Inertia::render('Notes/index', [
-            'notes' => Notes::latest()->get()
+            'notes' => Notes::latest()
+            ->where('excerpt', 'LIKE', "%$request->q%")
+            ->get()
         ]);
     }
 
